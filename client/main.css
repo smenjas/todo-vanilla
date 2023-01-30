@@ -4,9 +4,36 @@ body {
   color: black;
 }
 
+fieldset {
+  border: none;
+}
+
+button, input {
+  border: 1px solid black;
+  background: #ccc;
+  color: black;
+  font-size: 1.5em;
+}
+
+ul.tasks {
+  display: table-row;
+  list-style: none;
+}
+
+.todo {
+  width: 45 em;
+  margin: auto;
+}
+
 @media screen and (prefers-color-scheme: dark) {
   body {
     background-color: black;
+    color: white;
+  }
+
+  input {
+    border: 1px solid white;
+    background: #333;
     color: white;
   }
 }
