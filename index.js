@@ -20,22 +20,21 @@ function deleteTask(tasks, taskID) {
 }
 
 function showTask(taskList, task, taskID) {
-    const del = document.createElement('button');
-    //del.innerHTML = '❌';
-    del.innerHTML = '🗑️';
-    del.setAttribute('type', 'button');
-    del.setAttribute('class', 'delete');
-    del.setAttribute('title', 'Delete Task');
-    del.setAttribute('id', `delete-${taskID}`);
-    del.addEventListener('click', event => {
+    const button = document.createElement('button');
+    //button.innerHTML = '❌';
+    button.innerHTML = '🗑️';
+    button.setAttribute('type', 'button');
+    button.setAttribute('class', 'delete');
+    button.setAttribute('title', 'Delete Task');
+    button.setAttribute('id', `delete-${taskID}`);
+    button.addEventListener('click', event => {
         const taskID = event.target.id.split('-')[1];
         tasks = deleteTask(tasks, taskID);
         showTasks(taskList, tasks);
     });
 
     const li = document.createElement('li');
-    li.appendChild(del);
-    li.insertAdjacentHTML('beforeend', ` ${task}`);
+    li.append(button, ' ', task);
     li.setAttribute('id', `task-${taskID}`);
 
     taskList.appendChild(li);
