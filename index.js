@@ -17,6 +17,20 @@ function addTask(tasks, taskID, task) {
     return true;
 }
 
+function updateTask(task, taskID) {
+    if (!(taskID in tasks)) {
+        return false;
+    }
+
+    if (task === tasks[taskID]) {
+        return false;
+    }
+
+    tasks[taskID] = task;
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    return true;
+}
+
 function deleteTask(tasks, taskID) {
     tasks.splice(taskID, 1);
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -37,17 +51,24 @@ function showTask(taskList, tasks, task, taskID) {
         showTasks(tasks);
     });
 
+    const input = document.createElement('input');
+    input.setAttribute('name', `task-${taskID}`);
+    input.setAttribute('id', `task-${taskID}`);
+    input.setAttribute('size', inputSize);
+    input.setAttribute('maxlength', maxLength);
+    input.setAttribute('value', task);
+
     const li = document.createElement('li');
-    li.append(button, ' ', task);
-    li.setAttribute('id', `task-${taskID}`);
+    li.append(input, button);
 
     taskList.appendChild(li);
 }
 
 function showNewTask(taskList) {
     const button = document.createElement('button');
-    button.innerHTML = 'Add Task';
+    button.innerHTML = '&#10133;';
     button.setAttribute('type', 'submit');
+    button.setAttribute('title', 'Add Task');
 
     const input = document.createElement('input');
     input.setAttribute('name', 'new-task');
@@ -56,7 +77,7 @@ function showNewTask(taskList) {
     input.setAttribute('maxlength', maxLength);
 
     const li = document.createElement('li');
-    li.append(input, ' ', button);
+    li.append(input, button);
 
     taskList.appendChild(li);
 }
@@ -79,8 +100,13 @@ showTasks(tasks);
 const form = document.querySelector('form#tasks');
 form.onsubmit = (event) => {
     event.preventDefault();
-    const newTask = document.getElementById('new-task');
-    addTask(tasks, tasks.length, newTask.value);
-    newTask.value = '';
-    showTasks(tasks);
+    document.querySelectorAll('input').forEach(input => {
+        if (input.id === 'new-task') {
+            addTask(tasks, tasks.length, input.value);
+            input.value = '';
+        } else {
+            updateTask(input.value, input.id.split('-')[1]);
+        }
+        showTasks(tasks);
+    });
 }
