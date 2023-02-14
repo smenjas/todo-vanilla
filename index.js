@@ -39,12 +39,29 @@ function showTask(taskList, tasks, task, taskID) {
     taskList.appendChild(li);
 }
 
+function showNewTask(taskList) {
+    const button = document.createElement('button');
+    button.innerHTML = 'Add Task';
+    button.setAttribute('type', 'submit');
+
+    const input = document.createElement('input');
+    input.setAttribute('name', 'new-task');
+    input.setAttribute('id', 'new-task');
+
+    const li = document.createElement('li');
+    li.append(input, ' ', button);
+
+    taskList.appendChild(li);
+}
+
 function showTasks(tasks) {
     const taskList = document.getElementById('tasks');
     taskList.innerHTML = '';
+    showNewTask(taskList);
     for (let taskID = tasks.length - 1; taskID > -1; taskID--) {
         showTask(taskList, tasks, tasks[taskID], taskID);
     }
+    document.getElementById('new-task').focus();
 }
 
 //localStorage.setItem('tasks', '[]'); // Clear all tasks.
