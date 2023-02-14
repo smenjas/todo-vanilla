@@ -16,6 +16,10 @@ button, input {
   margin-bottom: 0.75rem;
 }
 
+input#new-task {
+  margin-left: 2.4rem;
+}
+
 ul#tasks {
   display: table-row;
   list-style: none;
