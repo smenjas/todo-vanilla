@@ -35,6 +35,8 @@ ul#tasks {
 
   button, input {
     border: 1px solid white;
+  }
+  input {
     background: #222;
     color: white;
   }

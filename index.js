@@ -25,7 +25,7 @@ function showTask(taskList, task, taskID) {
     del.innerHTML = '🗑️';
     del.setAttribute('type', 'button');
     del.setAttribute('class', 'delete');
-    del.setAttribute('title', 'Delete');
+    del.setAttribute('title', 'Delete Task');
     del.setAttribute('id', `delete-${taskID}`);
     del.addEventListener('click', event => {
         const taskID = event.target.id.split('-')[1];
