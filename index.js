@@ -13,11 +13,39 @@ function addTask(task, taskID) {
     return true;
 }
 
+function deleteTask(tasks, taskID) {
+    tasks.splice(taskID, 1);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    return tasks;
+}
+
 function showTask(taskList, task, taskID) {
+    const del = document.createElement('button');
+    //del.innerHTML = '❌';
+    del.innerHTML = '🗑️';
+    del.setAttribute('type', 'button');
+    del.setAttribute('class', 'delete');
+    del.setAttribute('title', 'Delete');
+    del.setAttribute('id', `delete-${taskID}`);
+    del.addEventListener('click', event => {
+        const taskID = event.target.id.split('-')[1];
+        tasks = deleteTask(tasks, taskID);
+        showTasks(taskList, tasks);
+    });
+
     const li = document.createElement('li');
-    li.innerHTML = task;
+    li.appendChild(del);
+    li.insertAdjacentHTML('beforeend', ` ${task}`);
     li.setAttribute('id', `task-${taskID}`);
+
     taskList.appendChild(li);
+}
+
+function showTasks(taskList, tasks) {
+    taskList.innerHTML = '';
+    tasks.forEach((task, taskID) => {
+        showTask(taskList, task, taskID);
+    });
 }
 
 const form = document.querySelector('form');
@@ -25,7 +53,7 @@ const newTask = document.getElementById('new-task');
 const taskList = document.getElementById('tasks');
 
 //localStorage.setItem('tasks', '[]'); // Clear all tasks.
-const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 form.onsubmit = (event) => {
     event.preventDefault();
@@ -33,6 +61,4 @@ form.onsubmit = (event) => {
     newTask.value = '';
 }
 
-tasks.forEach((task, taskID) => {
-    showTask(taskList, task, taskID);
-});
+showTasks(taskList, tasks);
