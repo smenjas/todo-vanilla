@@ -1,33 +1,38 @@
-function isLocalStorageSupported() {
-    try {
-        return 'localStorage' in window && window['localStorage'] !== null;
-    }
-    catch (error) {
+function addTask(task, taskID) {
+    task = task.trim();
+    taskID = parseInt(taskID);
+
+    if (task === '') {
         return false;
     }
+
+    tasks.push(task);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    showTask(taskList, task, taskID);
+
+    return true;
 }
 
-localStorageSupported = isLocalStorageSupported();
-console.log(`Local storage is${localStorageSupported ? '' : ' NOT'} supported.`);
-
-const tasks = [];
-
-let list = '';
-for (const task in tasks) {
-    const text = tasks[task];
-    console.log(task, text);
-    list += `<li><input type="text" size="80" maxsize="160" name="task-${task}" id="task-${task}" value="${text}"></li>`;
+function showTask(taskList, task, taskID) {
+    const li = document.createElement('li');
+    li.innerHTML = task;
+    li.setAttribute('id', `task-${taskID}`);
+    taskList.appendChild(li);
 }
 
-list += `<li><input type="text" size="80" maxsize="160" name="task-new" id="task-new" value=""></li>`;
+const form = document.querySelector('form');
+const newTask = document.getElementById('new-task');
+const taskList = document.getElementById('tasks');
 
-let content = '<div class="todo">'
-content += '<form action="" method="post">';
-content += '<fieldset>';
-content += `<ul class="tasks">${list}</ul>`;
-content += '<button type="submit">Submit</button>';
-content += '</fieldset>';
-content += '</form>'
-content += '</div>'
+//localStorage.setItem('tasks', '[]'); // Clear all tasks.
+const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-document.body.insertAdjacentHTML('beforeend', content);
+form.onsubmit = (event) => {
+    event.preventDefault();
+    addTask(newTask.value, tasks.length);
+    newTask.value = '';
+}
+
+tasks.forEach((task, taskID) => {
+    showTask(taskList, task, taskID);
+});
