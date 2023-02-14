@@ -1,4 +1,4 @@
-function addTask(task, taskID) {
+function addTask(tasks, taskID, task) {
     task = task.trim();
     taskID = parseInt(taskID);
 
@@ -8,7 +8,6 @@ function addTask(task, taskID) {
 
     tasks.push(task);
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    showTask(taskList, task, taskID);
 
     return true;
 }
@@ -19,7 +18,7 @@ function deleteTask(tasks, taskID) {
     return tasks;
 }
 
-function showTask(taskList, task, taskID) {
+function showTask(taskList, tasks, task, taskID) {
     const button = document.createElement('button');
     //button.innerHTML = '❌';
     button.innerHTML = '🗑️';
@@ -30,7 +29,7 @@ function showTask(taskList, task, taskID) {
     button.addEventListener('click', event => {
         const taskID = event.target.id.split('-')[1];
         tasks = deleteTask(tasks, taskID);
-        showTasks(taskList, tasks);
+        showTasks(tasks);
     });
 
     const li = document.createElement('li');
@@ -40,24 +39,24 @@ function showTask(taskList, task, taskID) {
     taskList.appendChild(li);
 }
 
-function showTasks(taskList, tasks) {
+function showTasks(tasks) {
+    const taskList = document.getElementById('tasks');
     taskList.innerHTML = '';
     tasks.forEach((task, taskID) => {
-        showTask(taskList, task, taskID);
+        showTask(taskList, tasks, task, taskID);
     });
 }
-
-const form = document.querySelector('form');
-const newTask = document.getElementById('new-task');
-const taskList = document.getElementById('tasks');
 
 //localStorage.setItem('tasks', '[]'); // Clear all tasks.
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
+showTasks(tasks);
+
+const form = document.querySelector('form');
 form.onsubmit = (event) => {
     event.preventDefault();
-    addTask(newTask.value, tasks.length);
+    const newTask = document.getElementById('new-task');
+    addTask(tasks, tasks.length, newTask.value);
     newTask.value = '';
+    showTasks(tasks);
 }
-
-showTasks(taskList, tasks);
