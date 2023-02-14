@@ -55,7 +55,7 @@ function showNewTask(taskList) {
 }
 
 function showTasks(tasks) {
-    const taskList = document.getElementById('tasks');
+    const taskList = document.querySelector('#tasks ul');
     taskList.innerHTML = '';
     showNewTask(taskList);
     for (let taskID = tasks.length - 1; taskID > -1; taskID--) {
@@ -69,7 +69,7 @@ let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 showTasks(tasks);
 
-const form = document.querySelector('form');
+const form = document.querySelector('form#tasks');
 form.onsubmit = (event) => {
     event.preventDefault();
     const newTask = document.getElementById('new-task');
