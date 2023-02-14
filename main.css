@@ -10,19 +10,17 @@ fieldset {
 
 button, input {
   border: 1px solid black;
-  background: #ccc;
+  background: #eee;
   color: black;
-  font-size: 1.5em;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
-ul.tasks {
+ul#tasks {
   display: table-row;
   list-style: none;
-}
-
-.todo {
-  width: 45 em;
-  margin: auto;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 @media screen and (prefers-color-scheme: dark) {
@@ -31,9 +29,9 @@ ul.tasks {
     color: white;
   }
 
-  input {
+  button, input {
     border: 1px solid white;
-    background: #333;
+    background: #222;
     color: white;
   }
 }
