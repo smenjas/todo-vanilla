@@ -1,3 +1,6 @@
+const inputSize = 70;
+const maxLength = 70;
+
 function addTask(tasks, taskID, task) {
     task = task.trim();
     taskID = parseInt(taskID);
@@ -5,6 +8,8 @@ function addTask(tasks, taskID, task) {
     if (task === '') {
         return false;
     }
+
+    task = task.substring(0, maxLength);
 
     tasks.push(task);
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -47,6 +52,8 @@ function showNewTask(taskList) {
     const input = document.createElement('input');
     input.setAttribute('name', 'new-task');
     input.setAttribute('id', 'new-task');
+    input.setAttribute('size', inputSize);
+    input.setAttribute('maxlength', maxLength);
 
     const li = document.createElement('li');
     li.append(input, ' ', button);
