@@ -24,7 +24,6 @@ ul#tasks {
   display: table-row;
   list-style: none;
   font-size: 1.5rem;
-  margin-bottom: 0.75rem;
 }
 
 @media screen and (prefers-color-scheme: dark) {

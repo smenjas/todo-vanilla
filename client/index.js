@@ -42,9 +42,9 @@ function showTask(taskList, tasks, task, taskID) {
 function showTasks(tasks) {
     const taskList = document.getElementById('tasks');
     taskList.innerHTML = '';
-    tasks.forEach((task, taskID) => {
-        showTask(taskList, tasks, task, taskID);
-    });
+    for (let taskID = tasks.length - 1; taskID > -1; taskID--) {
+        showTask(taskList, tasks, tasks[taskID], taskID);
+    }
 }
 
 //localStorage.setItem('tasks', '[]'); // Clear all tasks.
