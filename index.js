@@ -17,7 +17,7 @@ function addTask(tasks, taskID, task) {
     return true;
 }
 
-function updateTask(task, taskID) {
+function updateTask(tasks, task, taskID) {
     if (!(taskID in tasks)) {
         return false;
     }
@@ -105,7 +105,7 @@ form.onsubmit = (event) => {
             addTask(tasks, tasks.length, input.value);
             input.value = '';
         } else {
-            updateTask(input.value, input.id.split('-')[1]);
+            updateTask(tasks, input.value, input.id.split('-')[1]);
         }
         showTasks(tasks);
     });
