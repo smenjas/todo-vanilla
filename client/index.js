@@ -1,37 +1,46 @@
 const inputSize = 70;
 const maxLength = 70;
 
-function addTask(tasks, taskID, task) {
+function addTask(tasks, task) {
     task = task.trim();
-    taskID = parseInt(taskID);
-
     if (task === '') {
-        return false;
+        return tasks;
     }
 
     task = task.substring(0, maxLength);
-
     tasks.push(task);
     localStorage.setItem('tasks', JSON.stringify(tasks));
-
-    return true;
+    return tasks;
 }
 
-function updateTask(tasks, task, taskID) {
+function updateTask(tasks, taskID, task) {
+    taskID = parseInt(taskID);
     if (!(taskID in tasks)) {
-        return false;
+        return tasks;
     }
 
+    task = task.trim();
+    task = task.substring(0, maxLength);
     if (task === tasks[taskID]) {
-        return false;
+        return tasks;
+    }
+
+    if (task === '') {
+        tasks = deleteTask(tasks, taskID);
+        return tasks;
     }
 
     tasks[taskID] = task;
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    return true;
+    return tasks;
 }
 
 function deleteTask(tasks, taskID) {
+    taskID = parseInt(taskID);
+    if (!(taskID in tasks)) {
+        return tasks;
+    }
+
     tasks.splice(taskID, 1);
     localStorage.setItem('tasks', JSON.stringify(tasks));
     return tasks;
@@ -102,10 +111,11 @@ form.onsubmit = (event) => {
     event.preventDefault();
     document.querySelectorAll('input').forEach(input => {
         if (input.id === 'new-task') {
-            addTask(tasks, tasks.length, input.value);
+            tasks = addTask(tasks, input.value);
             input.value = '';
         } else {
-            updateTask(tasks, input.value, input.id.split('-')[1]);
+            const taskID = input.id.split('-')[1];
+            tasks = updateTask(tasks, taskID, input.value);
         }
         showTasks(tasks);
     });
