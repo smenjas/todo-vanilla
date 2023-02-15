@@ -40,6 +40,11 @@ function updateTask(tasks, taskID, task) {
 }
 
 function deleteTask(tasks, taskID) {
+    taskID = parseInt(taskID);
+    if (!(taskID in tasks)) {
+        return tasks;
+    }
+
     tasks.splice(taskID, 1);
     localStorage.setItem('tasks', JSON.stringify(tasks));
     return tasks;
