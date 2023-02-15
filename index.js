@@ -17,18 +17,26 @@ function addTask(tasks, taskID, task) {
     return true;
 }
 
-function updateTask(tasks, task, taskID) {
+function updateTask(tasks, taskID, task) {
+    taskID = parseInt(taskID);
     if (!(taskID in tasks)) {
-        return false;
+        return tasks;
     }
 
+    task = task.trim();
+    task = task.substring(0, maxLength);
     if (task === tasks[taskID]) {
-        return false;
+        return tasks;
+    }
+
+    if (task === '') {
+        tasks = deleteTask(tasks, taskID);
+        return tasks;
     }
 
     tasks[taskID] = task;
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    return true;
+    return tasks;
 }
 
 function deleteTask(tasks, taskID) {
@@ -105,7 +113,8 @@ form.onsubmit = (event) => {
             addTask(tasks, tasks.length, input.value);
             input.value = '';
         } else {
-            updateTask(tasks, input.value, input.id.split('-')[1]);
+            const taskID = input.id.split('-')[1];
+            tasks = updateTask(tasks, taskID, input.value);
         }
         showTasks(tasks);
     });
