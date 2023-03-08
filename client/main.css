@@ -1,43 +1,43 @@
 body {
-  font-family: sans-serif;
-  background-color: white;
-  color: black;
+    font-family: sans-serif;
+    background-color: white;
+    color: black;
 }
 
 fieldset {
-  border: none;
+    border: none;
 }
 
 button, input {
-  border: 1px solid black;
-  background: #eee;
-  color: black;
-  font-size: 1.5rem;
+    border: 1px solid black;
+    background: #eee;
+    color: black;
+    font-size: 1.5rem;
 }
 button {
-  height: 2.5rem;
+    height: 2.5rem;
 }
 input {
-  padding: 0.3rem;
+    padding: 0.3rem;
 }
 
 #tasks ul {
-  display: table-row;
-  list-style: none;
-  font-size: 1.5rem;
+    display: table-row;
+    list-style: none;
+    font-size: 1.5rem;
 }
 
 @media screen and (prefers-color-scheme: dark) {
-  body {
-    background-color: black;
-    color: white;
-  }
+    body {
+        background-color: black;
+        color: white;
+    }
 
-  button, input {
-    border: 1px solid white;
-  }
-  input {
-    background: #222;
-    color: white;
-  }
+    button, input {
+        border: 1px solid white;
+    }
+    input {
+        background: #222;
+        color: white;
+    }
 }
