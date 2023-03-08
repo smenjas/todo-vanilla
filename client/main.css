@@ -1,13 +1,12 @@
 body {
     font-family: sans-serif;
-    background-color: white;
+    background: white;
     color: black;
 }
 
 fieldset {
     border: none;
 }
-
 button, input {
     border: 1px solid black;
     background: #eee;
@@ -29,14 +28,12 @@ input {
 
 @media screen and (prefers-color-scheme: dark) {
     body {
-        background-color: black;
+        background: black;
         color: white;
     }
 
     button, input {
         border: 1px solid white;
-    }
-    input {
         background: #222;
         color: white;
     }
