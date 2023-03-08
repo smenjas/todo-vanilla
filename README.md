@@ -1,5 +1,10 @@
 # todo-vanilla
 
-This is a to-do app built with vanilla JavaScript.
+This is a to-do app built with vanilla JavaScript. It's an exercise to learn
+web development fundamentals, using the simplest technology stack: plain HTML,
+CSS, & client-side JS.
 
-Copyright 2023 Benjamin Thornton, all rights reserved.
+## Exercise Constraints
+- No libraries, frameworks, templates, or preprocessors
+- No server side processing (e.g. Node or Deno)
+- No dev tools except Git, an editor, and a web browser
