@@ -24,6 +24,9 @@ input {
     display: table-row;
     font-size: 1.5rem;
 }
+#tasks input {
+    width: calc(100vw - 6rem);
+}
 
 @media print {
     h1, button, li:first-child {
