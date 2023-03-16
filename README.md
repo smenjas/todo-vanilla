@@ -8,3 +8,5 @@ CSS, & client-side JS.
 - No libraries, frameworks, templates, or preprocessors
 - No server side processing (e.g. Node or Deno)
 - No dev tools except Git, an editor, and a web browser
+
+![ToDo app screenshot](screenshots/todo.png)
