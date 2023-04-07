@@ -9,4 +9,5 @@ CSS, & client-side JS.
 - No server side processing (e.g. Node or Deno)
 - No dev tools except Git, an editor, and a web browser
 
-![ToDo app screenshot](screenshots/todo.png)
+![ToDo app screenshot - light mode](screenshots/todo-light.png)
+![ToDo app screenshot - dark mode](screenshots/todo-dark.png)
