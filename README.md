@@ -11,3 +11,6 @@ CSS, & client-side JS.
 
 ![ToDo app screenshot - light mode](screenshots/todo-light.png)
 ![ToDo app screenshot - dark mode](screenshots/todo-dark.png)
+
+favicon by [Twemoji](https://twemoji.twitter.com/), licensed as [CC-BY
+4.0](https://creativecommons.org/licenses/by/4.0/).
