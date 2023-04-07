@@ -15,6 +15,7 @@ button, input {
 }
 button {
     height: 2.5rem;
+    width: 2.5rem;
 }
 input {
     padding: 0.3rem;
@@ -26,6 +27,10 @@ input {
 }
 #tasks input {
     width: calc(100vw - 6rem);
+}
+#tasks li {
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 @media print {
@@ -54,7 +59,7 @@ input {
         border-color: white;
     }
     button {
-        background-color: #eee;
+        background: #eee;
     }
     input {
         background: #222;
