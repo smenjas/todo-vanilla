@@ -29,7 +29,9 @@ input {
 }
 
 @media print {
-    h1, button, li:first-child {
+    h1,
+    button,
+    #tasks li:first-child {
         display: none;
     }
     input {
@@ -48,9 +50,13 @@ input {
         background: black;
         color: white;
     }
-
     button, input {
         border-color: white;
+    }
+    button {
+        background-color: #eee;
+    }
+    input {
         background: #222;
         color: white;
     }
