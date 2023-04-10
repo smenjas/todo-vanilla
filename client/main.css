@@ -14,10 +14,6 @@ button, input {
     font-size: 1.5rem;
     padding: 0.3rem;
 }
-button {
-    height: 2.5rem;
-    width: 2.5rem;
-}
 
 button#add-task {
     font-size: 2.0rem;
@@ -28,6 +24,10 @@ button#add-task {
 #tasks ul {
     display: table-row;
     font-size: 1.5rem;
+}
+#tasks button {
+    height: 2.5rem;
+    width: 2.5rem;
 }
 #tasks input {
     max-width: 50rem;
