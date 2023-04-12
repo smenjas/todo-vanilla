@@ -9,6 +9,11 @@ CSS, & client-side JS.
 - No server side processing (e.g. Node or Deno)
 - No dev tools except Git, an editor, and a web browser
 
+## Goals
+- [x] [As simple as possible, but not simpler](https://quoteinvestigator.com/2011/05/13/einstein-simple/)
+- [x] Create, read, update, and delete tasks
+- [x] Store tasks in the browser
+
 ![ToDo app screenshot - light mode](screenshots/todo-light.png)
 ![ToDo app screenshot - dark mode](screenshots/todo-dark.png)
 
