@@ -1,6 +1,5 @@
 'use strict';
 
-const inputSize = 70;
 const maxLength = 70;
 
 function addTask(tasks, task) {
@@ -11,7 +10,7 @@ function addTask(tasks, task) {
 
     task = task.substring(0, maxLength);
     tasks.push(task);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    setTasks(tasks);
     return tasks;
 }
 
@@ -33,7 +32,7 @@ function updateTask(tasks, taskID, task) {
     }
 
     tasks[taskID] = task;
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    setTasks(tasks);
     return tasks;
 }
 
@@ -44,7 +43,7 @@ function deleteTask(tasks, taskID) {
     }
 
     tasks.splice(taskID, 1);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    setTasks(tasks);
     return tasks;
 }
 
@@ -52,7 +51,7 @@ function createInput(name, value = "") {
     const input = document.createElement('input');
     input.setAttribute('name', name);
     input.setAttribute('id', name);
-    input.setAttribute('size', inputSize);
+    input.setAttribute('size', maxLength);
     input.setAttribute('maxlength', maxLength);
     input.setAttribute('value', value);
     return input;
@@ -104,9 +103,16 @@ function showTasks(tasks) {
     document.getElementById('new-task').focus();
 }
 
-//localStorage.setItem('tasks', '[]'); // Clear all tasks.
-let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+function getTasks() {
+    //localStorage.setItem('tasks', '[]'); // Clear all tasks.
+    return JSON.parse(localStorage.getItem('tasks')) || [];
+}
 
+function setTasks(tasks) {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+let tasks = getTasks();
 showTasks(tasks);
 
 const form = document.querySelector('form#tasks');
@@ -122,4 +128,4 @@ form.onsubmit = (event) => {
         }
         showTasks(tasks);
     });
-}
+};
