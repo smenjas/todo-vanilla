@@ -47,7 +47,7 @@ function deleteTask(tasks, taskID) {
     return tasks;
 }
 
-function createInput(name, value = "") {
+function createInput(name, value = '') {
     const input = document.createElement('input');
     input.setAttribute('name', name);
     input.setAttribute('id', name);
