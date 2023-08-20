@@ -7,6 +7,7 @@ body {
 fieldset {
     border: none;
 }
+
 button, input {
     border: 1px solid black;
     background: #eee;
@@ -25,18 +26,22 @@ button#add-task {
     display: table-row;
     font-size: 1.5rem;
 }
+
 #tasks button {
     height: 2.5rem;
     width: 2.5rem;
 }
+
 #tasks input {
     max-width: 50rem;
     width: calc(100vw - 6rem);
 }
+
 #tasks li {
     display: flex;
     flex-wrap: nowrap;
 }
+
 #tasks li:hover {
     outline: 5px outset black;
 }
@@ -47,11 +52,13 @@ button#add-task {
     #tasks li:first-child {
         display: none;
     }
+
     input {
         background: white;
         color: black;
         border: none;
     }
+
     #tasks ul {
         display: block;
         list-style-type: "☐";
@@ -63,11 +70,13 @@ button#add-task {
         background: black;
         color: white;
     }
+
     button, input {
         border-color: white;
         background: #222;
         color: white;
     }
+
     #tasks li:hover {
         outline-color: white;
     }
